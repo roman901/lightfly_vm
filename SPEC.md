@@ -20,8 +20,9 @@ In bytecode `ADD 5` construction looks like:
 
 ## Opcodes list
 Size of each operand is 8-bit (one byte).
+
 | # | opcode | mnemonic | description |
 | --- | --- | --- | --- |
-| 1 | 0x00 | NOP | No operation (skip step) |
+| 1 | 0x00 | NOP | No operation (skip step) 
 | 2 | 0x01 | ADD | Accepts one argument and sum it to ACC register |
 | 3 | 0x02 | SUB | Accepts one argument and substract it from ACC register |
