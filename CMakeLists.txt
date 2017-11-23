@@ -3,4 +3,6 @@ project(lightfly_vm)
 
 set(CMAKE_C_STANDARD 11)
 
-subdirs(lightfly_vm_lib lightfly_vm_runner lightfly_vm_compiler)
+add_subdirectory(lightfly_vm_compiler)
+add_subdirectory(lightfly_vm_lib)
+add_subdirectory(lightfly_vm_runner)
