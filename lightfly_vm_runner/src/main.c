@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <lf_loader.h>
 
 int main(int argc, char** argv) {
     FILE *file;
