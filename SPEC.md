@@ -8,7 +8,7 @@ Next byte represents version of bytecode, **0x01** current.
 All registers and operands are 8-bit.
 Because of memory addressing is 16-bit, max count of instructions in file is 65535.
 ## Passing arguments
-For example, opcode `ADD <number>` consist of two parts: opcode for `ADD` (**0x01**) and ADD's argument.
+For example, opcode `ADD <number>` consists of two parts: opcode for `ADD` (**0x01**) and ADD's argument.
 
 In bytecode `ADD 5` construction looks like:
 **0x01** **0x05**
