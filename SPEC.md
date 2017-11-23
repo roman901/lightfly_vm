@@ -1,6 +1,6 @@
 # LightFly VM Specifications and machine language
 ## Binary file structure
-Binary file must start with **0x55** **0x75** bytes signature (UW in ASCII code). 
+Binary file must start with **0x55** **0x57** bytes signature (UW in ASCII code). 
 Next byte represents version of bytecode, **0x01** current.
 
 **TODO:** platform-specific functions checking
@@ -37,3 +37,4 @@ Size of each operand is 8-bit (one byte).
 | 10 | 0x09 | MOV R4 | Accepts on argument and store in in R4 register |
 | 11 | 0x0A | MOV R5 | Accepts on argument and store in in R5 register |
 | 12 | 0x0B | JMP | Accepts one argument - address, and jump on it |
+| 256 | 0xFF | HLT | Stops VM |
