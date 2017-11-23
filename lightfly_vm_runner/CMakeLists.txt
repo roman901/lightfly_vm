@@ -1,4 +1,6 @@
-include_directories(${lightfly_vm_runner_SOURCE_DIR}/inc)
+project(lightfly_vm_runner)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
 include_directories(${lightfly_vm_lib_SOURCE_DIR}/include)
 link_directories(${lightfly_vm_lib_SOURCE_DIR}/src)
