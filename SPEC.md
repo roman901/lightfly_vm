@@ -16,11 +16,12 @@ In bytecode `ADD 5` construction looks like:
 * ACC - accumulator for arithmetical operations
 * SP - source pointer register for some operations
 * DP - destination pointer register for some operations
+* R1-R5 - general purpose registers
 
 ## Opcodes list
 Size of each operand is 8-bit (one byte).
-# | opcode | mnemonic | description
---- | --- | --- | --- 
-1 | 0x00 | NOP | No operation (skip step)
-2 | 0x01 | ADD | Accepts one argument and sum it to ACC register
-3 | 0x02 | SUB | Accepts one argument and substract it from ACC register
+| # | opcode | mnemonic | description |
+| --- | --- | --- | --- |
+| 1 | 0x00 | NOP | No operation (skip step) |
+| 2 | 0x01 | ADD | Accepts one argument and sum it to ACC register |
+| 3 | 0x02 | SUB | Accepts one argument and substract it from ACC register |
