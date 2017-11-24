@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     // Stage 1: try to open file
     file = fopen(argv[1], "rb");
     if (!file) {
-        printf("Error: cannot open file %s", argv[1]);
+        printf("Error: can't open file %s", argv[1]);
         return EXIT_FAILURE;
     }
 
@@ -37,7 +37,12 @@ int main(int argc, char** argv) {
 
     // Stage 4: check header signature and bytecode version
     if (!lf_loader_check_header(program)) {
-
+        printf("Error: incorrect header (must be 0x55 0x57)");
     }
+
+    if (!lf_loader_check_version(program)) {
+        printf("Error: incorrect version of bytecode");
+    }
+
     return EXIT_SUCCESS;
 }
