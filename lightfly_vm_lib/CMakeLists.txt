@@ -1,3 +1,5 @@
+project(lightfly_vm_lib)
+
 add_library(lightfly_vm_lib
         src/lib.c
         src/arch/linux.c
