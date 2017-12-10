@@ -136,6 +136,91 @@ int _lf_opcode_jno(lf_context *context) {
         context->instruction_pointer = _lf_read_address(context);
     return LF_STATE_SUCCESS;
 }
+void _lf_compare_logic(lf_context *context, int first, int second) {
+    if (first == second) {
+        context->flag_cf = 1;
+        return;
+    } else {
+        context->flag_cf = 0;
+        if (first > second) {
+            context->flag_of = 1;
+        } else {
+            context->flag_of = 0;
+        }
+    }
+}
+int _lf_opcode_cmp(lf_context *context) {
+    int first = lf_executor_next_instruction(context);
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_acc(lf_context *context) {
+    int first = context->reg_acc;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r1(lf_context *context) {
+    int first = context->reg_r1;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r2(lf_context *context) {
+    int first = context->reg_r2;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r3(lf_context *context) {
+    int first = context->reg_r3;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r4(lf_context *context) {
+    int first = context->reg_r4;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r5(lf_context *context) {
+    int first = context->reg_r5;
+    int second = lf_executor_next_instruction(context);
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r1_acc(lf_context *context) {
+    int first = context->reg_r1;
+    int second = context->reg_acc;
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r2_acc(lf_context *context) {
+    int first = context->reg_r2;
+    int second = context->reg_acc;
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r3_acc(lf_context *context) {
+    int first = context->reg_r3;
+    int second = context->reg_acc;
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r4_acc(lf_context *context) {
+    int first = context->reg_r4;
+    int second = context->reg_acc;
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_cmp_r5_acc(lf_context *context) {
+    int first = context->reg_r5;
+    int second = context->reg_acc;
+    _lf_compare_logic(context, first, second);
+    return LF_STATE_SUCCESS;
+}
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
@@ -176,6 +261,19 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x1D, _lf_opcode_jne);
     REGISTER_OPCODE(0x1E, _lf_opcode_jo);
     REGISTER_OPCODE(0x1F, _lf_opcode_jno);
+
+    REGISTER_OPCODE(0x20, _lf_opcode_cmp);
+    REGISTER_OPCODE(0x21, _lf_opcode_cmp_acc);
+    REGISTER_OPCODE(0x22, _lf_opcode_cmp_r1);
+    REGISTER_OPCODE(0x23, _lf_opcode_cmp_r2);
+    REGISTER_OPCODE(0x24, _lf_opcode_cmp_r3);
+    REGISTER_OPCODE(0x25, _lf_opcode_cmp_r4);
+    REGISTER_OPCODE(0x26, _lf_opcode_cmp_r5);
+    REGISTER_OPCODE(0x27, _lf_opcode_cmp_r1_acc);
+    REGISTER_OPCODE(0x28, _lf_opcode_cmp_r2_acc);
+    REGISTER_OPCODE(0x29, _lf_opcode_cmp_r3_acc);
+    REGISTER_OPCODE(0x2A, _lf_opcode_cmp_r4_acc);
+    REGISTER_OPCODE(0x2B, _lf_opcode_cmp_r5_acc);
 
     REGISTER_OPCODE(0xFF, _lf_opcode_hlt);
 }

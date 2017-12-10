@@ -64,5 +64,16 @@ Size of each operand is 8-bit (one byte).
 | 31 | 0x1E | JO X Y | Acts like JMP, but does jump only when OF is 1 |
 | 32 | 0x1F | JNO X Y | Acts like JMP, but does jump only when OF is not 1 |
 | 33 | 0x20 | CMP X Y | Accepts two operands and compare it. If they an equal CMP sets CF flag to 1. If first operand greater than second, CMP set OF flag to 1 |
+| 34 | 0x21 | CMP ACC Y | Acts like CMP X Y, but with ACC register |
+| 35 | 0x22 | CMP R1 Y | Acts like CMP X Y, but with R1 register |
+| 36 | 0x23 | CMP R2 Y | Acts like CMP X Y, but with R2 register |
+| 37 | 0x24 | CMP R3 Y | Acts like CMP X Y, but with R3 register |
+| 38 | 0x25 | CMP R4 Y | Acts like CMP X Y, but with R4 register |
+| 39 | 0x26 | CMP R5 Y | Acts like CMP X Y, but with R5 register |
+| 40 | 0x27 | CMP R1 ACC | Acts like CMP X Y, but with R1 and ACC register |
+| 41 | 0x28 | CMP R2 ACC | Acts like CMP X Y, but with R2 and ACC register |
+| 42 | 0x29 | CMP R3 ACC | Acts like CMP X Y, but with R3 and ACC register |
+| 43 | 0x2A | CMP R4 ACC | Acts like CMP X Y, but with R4 and ACC register |
+| 44 | 0x2B | CMP R5 ACC | Acts like CMP X Y, but with R5 and ACC register |
 | 255 | 0xFE | PRNT X | Print one ASCII char (linux-only, for testing purposes) |
 | 256 | 0xFF | HLT | Stops VM |
