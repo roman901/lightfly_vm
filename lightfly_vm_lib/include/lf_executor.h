@@ -10,6 +10,17 @@ typedef struct {
     long cycles;
     size_t program_length;
     unsigned char const *program;
+
+    // Registers
+    unsigned char reg_acc;
+    unsigned char reg_sp;
+    unsigned char reg_dp;
+    unsigned char reg_r1;
+    unsigned char reg_r2;
+    unsigned char reg_r3;
+    unsigned char reg_r4;
+    unsigned char reg_r5;
+
 } lf_context;
 
 void lf_executor_init(lf_context *context, size_t length, unsigned char const *program);
