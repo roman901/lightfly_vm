@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #define REGISTER_OPCODE(opcode) \
+    (lf_opcodes+(opcode))->init = 1;
 
 typedef struct {
     int init;
