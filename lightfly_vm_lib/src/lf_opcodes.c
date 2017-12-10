@@ -47,8 +47,6 @@ int _lf_opcode_mov_r5(lf_context *context) {
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
-    lf_opcodes = (lf_opcode*) calloc (256, sizeof(lf_opcode));
-
     REGISTER_OPCODE(0x00, _lf_opcode_nop);
     REGISTER_OPCODE(0x01, _lf_opcode_add);
     REGISTER_OPCODE(0x02, _lf_opcode_sub);

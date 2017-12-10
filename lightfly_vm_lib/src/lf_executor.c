@@ -41,12 +41,10 @@ unsigned char lf_executor_next_instruction(lf_context *context) {
 }
 
 int lf_executor_try_execute(lf_context *context, unsigned char instruction) {
-    lf_opcode opcode = *(lf_opcodes+instruction);
-
-    if (opcode.init == 0) {
+    if ((*lf_opcodes[instruction]) == NULL) {
         return LF_STATE_EXCEPTION;
     }
 
-    int state = opcode.run(context);
+    int state = (*lf_opcodes[instruction])(context);
     return state;
 }
