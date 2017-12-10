@@ -4,6 +4,7 @@
 #include <lf_loader.h>
 #include <lf_executor.h>
 #include <string.h>
+#include <opcodes.h>
 
 #define HEADER_LENGHT 3
 
@@ -55,6 +56,7 @@ int main(int argc, char** argv) {
 
     // TODO(spark): dynamic calculation of header size
 
+    lf_runner_opcodes_init();
     lf_executor_init(context, length - HEADER_LENGHT, program);
 
     // Stage 6: start executing program

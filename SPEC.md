@@ -7,6 +7,7 @@ Next byte represents version of bytecode, **0x01** current.
 
 All registers and operands are 8-bit.
 Because of memory addressing is 16-bit, max count of instructions in file is 65535.
+
 ## Passing arguments
 For example, opcode `ADD <number>` consists of two parts: opcode for `ADD` (**0x01**) and ADD's argument.
 
@@ -25,6 +26,11 @@ You cannot get flags values directly in code. But there is opcodes like CMP, whi
 * CF - compare flag, get 1 if CMP operands are equals, otherwise 0
 * OF - overflow flag, get 1 if ADD or SUM result (or in CMP first operand greater than second) 
 get overflow, otherwise 0
+
+## Platform-specific opcodes
+Runner software can register custom opcodes for their purposes.
+By example, Linux runner registers 0xFE opcode `PRNT X`, which displays one ASCII char.
+In future you will able to check if some opcode exists in interpreter.
 
 ## Opcodes list
 Size of each operand is 8-bit (one byte).
@@ -91,5 +97,4 @@ Size of each operand is 8-bit (one byte).
 | 58 | 0x39 | DEC R3 | Decrements R3 value |
 | 59 | 0x3A | DEC R4 | Decrements R4 value |
 | 60 | 0x3B | DEC R5 | Decrements R5 value |
-| 255 | 0xFE | PRNT X | Print one ASCII char (linux-only, for testing purposes) |
 | 256 | 0xFF | HLT | Stops VM |
