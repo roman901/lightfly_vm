@@ -58,15 +58,15 @@ int main(int argc, char** argv) {
     lf_executor_init(context, length - HEADER_LENGHT, program);
 
     // Stage 6: start executing program
-    int status = LF_STEP_SUCCESS;
-    while (status == LF_STEP_SUCCESS) {
+    int status = LF_STATE_SUCCESS;
+    while (status == LF_STATE_SUCCESS) {
         status = lf_executor_do_step(context);
     }
 
-    if (status == LF_STEP_EXCEPTION) {
+    if (status == LF_STATE_EXCEPTION) {
         printf("Program has ended with exception (%li cycles)", context->cycles);
         return EXIT_FAILURE;
-    } else if (status == LF_STEP_HALT) {
+    } else if (status == LF_STATE_HALT) {
         printf("Program has halted (%li cycles)", context->cycles);
     } else {
         printf("An unknown error occurred");

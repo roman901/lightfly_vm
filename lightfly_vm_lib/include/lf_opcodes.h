@@ -2,11 +2,15 @@
 #define LIGHTFLY_VM_LF_OPCODES_H
 
 #include <stdlib.h>
-#define REGISTER_OPCODE(opcode) \
-    (lf_opcodes+(opcode))->init = 1;
+#include <lf_executor.h>
+
+#define REGISTER_OPCODE(opcode, function) \
+    (lf_opcodes+(opcode))->init = 1; \
+    (lf_opcodes+(opcode))->run = (function);
 
 typedef struct {
     int init;
+    int (*run)(lf_context *);
 } lf_opcode;
 
 lf_opcode *lf_opcodes;

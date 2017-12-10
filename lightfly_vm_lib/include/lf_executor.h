@@ -1,9 +1,9 @@
 #ifndef LIGHTFLY_VM_LF_EXECUTOR_H
 #define LIGHTFLY_VM_LF_EXECUTOR_H
 
-#define LF_STEP_SUCCESS 0
-#define LF_STEP_EXCEPTION 1
-#define LF_STEP_HALT 2
+#define LF_STATE_SUCCESS 0
+#define LF_STATE_EXCEPTION 1
+#define LF_STATE_HALT 255
 
 typedef struct {
     int instruction_pointer;
@@ -12,6 +12,7 @@ typedef struct {
     unsigned char const *program;
 
     // Registers
+    unsigned char halted;
     unsigned char reg_acc;
     unsigned char reg_sp;
     unsigned char reg_dp;
