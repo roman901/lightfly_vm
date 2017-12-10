@@ -29,7 +29,7 @@ get overflow, otherwise 0
 
 ## Platform-specific opcodes
 Runner software can register custom opcodes for their purposes.
-By example, Linux runner registers 0xFE opcode `PRNT X`, which displays one ASCII char.
+By example, Linux runner register 0xFE opcode `PRNT X`, which displays one ASCII char.
 In future you will able to check if some opcode exists in interpreter.
 
 ## Opcodes list
