@@ -21,6 +21,9 @@ typedef struct {
     unsigned char reg_r4;
     unsigned char reg_r5;
 
+    unsigned char flag_cf;
+    unsigned char flag_of;
+
 } lf_context;
 
 void lf_executor_init(lf_context *context, size_t length, unsigned char const *program);

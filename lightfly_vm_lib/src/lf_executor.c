@@ -15,6 +15,8 @@ void lf_executor_init(lf_context *context,  size_t length, unsigned char const *
     context->reg_r3 = 0;
     context->reg_r4 = 0;
     context->reg_r5 = 0;
+    context->flag_cf = 0;
+    context->flag_of = 0;
     context->program_length = length;
     context->program = program;
 }

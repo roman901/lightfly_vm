@@ -58,10 +58,11 @@ Size of each operand is 8-bit (one byte).
 | 25 | 0x18 | MOV ACC, R3 | Moves R3 content to ACC register |
 | 26 | 0x19 | MOV ACC, R4 | Moves R4 content to ACC register |
 | 27 | 0x1A | MOV ACC, R5 | Moves R5 content to ACC register |
-| 28 | 0x1B | JMP | Accepts two arguments - address, splitted into two 8-bit digits and jump on it |
-| 29 | 0x1C | JE | Acts like JMP, but does jump only when CF is 1 |
-| 30 | 0x1D | JNE | Acts like JMP, but does jump only when CF is not 1 |
-| 31 | 0x1E | JO | Acts like JMP, but does jump only when OF is 1 |
-| 32 | 0x1F | JNO | Acts like JMP, but does jump only when OF is not 1 |
-| 33 | 0x20 | CMP | Accepts two operands and compare it. If they an equal CMP sets CF flag to 1. If first operand greater than second, CMP set OF flag to 1 |
+| 28 | 0x1B | JMP X Y| Accepts two arguments - address, splitted into two 8-bit digits and jump on it |
+| 29 | 0x1C | JE X Y | Acts like JMP, but does jump only when CF is 1 |
+| 30 | 0x1D | JNE X Y | Acts like JMP, but does jump only when CF is not 1 |
+| 31 | 0x1E | JO X Y | Acts like JMP, but does jump only when OF is 1 |
+| 32 | 0x1F | JNO X Y | Acts like JMP, but does jump only when OF is not 1 |
+| 33 | 0x20 | CMP X Y | Accepts two operands and compare it. If they an equal CMP sets CF flag to 1. If first operand greater than second, CMP set OF flag to 1 |
+| 255 | 0xFE | PRNT X | Print one ASCII char (linux-only, for testing purposes) |
 | 256 | 0xFF | HLT | Stops VM |
