@@ -50,8 +50,8 @@ int main(int argc, char** argv) {
     // Context struct, describes current state of execution
     lf_context *context = malloc(sizeof(lf_context));
 
-    unsigned char const *program = malloc(length - HEADER_LENGHT);
-    memcpy(raw_program + HEADER_LENGHT, program, length - HEADER_LENGHT); // Copy program code without header
+    unsigned char *program = malloc(length - HEADER_LENGHT);
+    memcpy(program, raw_program + HEADER_LENGHT, length - HEADER_LENGHT); // Copy program code without header
 
     // TODO(spark): dynamic calculation of header size
 
