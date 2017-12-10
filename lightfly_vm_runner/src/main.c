@@ -64,12 +64,12 @@ int main(int argc, char** argv) {
     }
 
     if (status == LF_STEP_EXCEPTION) {
-        printf("Program has ended with exception");
+        printf("Program has ended with exception (%li cycles)", context->cycles);
         return EXIT_FAILURE;
     } else if (status == LF_STEP_HALT) {
-        printf("Program has halted");
+        printf("Program has halted (%li cycles)", context->cycles);
     } else {
-        printf("Program has reached end");
+        printf("An unknown error occurred");
     }
 
     return EXIT_SUCCESS;
