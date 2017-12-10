@@ -226,6 +226,70 @@ int _lf_opcode_prnt(lf_context *context) {
     printf("%c", chr);
     return LF_STATE_SUCCESS;
 }
+int _lf_opcode_inc_acc(lf_context *context) {
+    context->reg_acc++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_sp(lf_context *context) {
+    context->reg_sp++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_dp(lf_context *context) {
+    context->reg_dp++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_r1(lf_context *context) {
+    context->reg_r1++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_r2(lf_context *context) {
+    context->reg_r2++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_r3(lf_context *context) {
+    context->reg_r3++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_r4(lf_context *context) {
+    context->reg_r4++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_inc_r5(lf_context *context) {
+    context->reg_r5++;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_acc(lf_context *context) {
+    context->reg_acc--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_sp(lf_context *context) {
+    context->reg_sp--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_dp(lf_context *context) {
+    context->reg_dp--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_r1(lf_context *context) {
+    context->reg_r1--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_r2(lf_context *context) {
+    context->reg_r2--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_r3(lf_context *context) {
+    context->reg_r3--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_r4(lf_context *context) {
+    context->reg_r4--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_dec_r5(lf_context *context) {
+    context->reg_r5--;
+    return LF_STATE_SUCCESS;
+}
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
@@ -279,6 +343,25 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x29, _lf_opcode_cmp_r3_acc);
     REGISTER_OPCODE(0x2A, _lf_opcode_cmp_r4_acc);
     REGISTER_OPCODE(0x2B, _lf_opcode_cmp_r5_acc);
+
+    REGISTER_OPCODE(0x2C, _lf_opcode_inc_acc);
+    REGISTER_OPCODE(0x2D, _lf_opcode_inc_sp);
+    REGISTER_OPCODE(0x2E, _lf_opcode_inc_dp);
+    REGISTER_OPCODE(0x2F, _lf_opcode_inc_r1);
+    REGISTER_OPCODE(0x30, _lf_opcode_inc_r2);
+    REGISTER_OPCODE(0x31, _lf_opcode_inc_r3);
+    REGISTER_OPCODE(0x32, _lf_opcode_inc_r4);
+    REGISTER_OPCODE(0x33, _lf_opcode_inc_r5);
+    REGISTER_OPCODE(0x33, _lf_opcode_inc_r5);
+
+    REGISTER_OPCODE(0x34, _lf_opcode_dec_acc);
+    REGISTER_OPCODE(0x35, _lf_opcode_dec_sp);
+    REGISTER_OPCODE(0x36, _lf_opcode_dec_dp);
+    REGISTER_OPCODE(0x37, _lf_opcode_dec_r1);
+    REGISTER_OPCODE(0x38, _lf_opcode_dec_r2);
+    REGISTER_OPCODE(0x39, _lf_opcode_dec_r3);
+    REGISTER_OPCODE(0x3A, _lf_opcode_dec_r4);
+    REGISTER_OPCODE(0x3B, _lf_opcode_dec_r5);
 
     REGISTER_OPCODE(0xFE, _lf_opcode_prnt);
     REGISTER_OPCODE(0xFF, _lf_opcode_hlt);

@@ -75,5 +75,21 @@ Size of each operand is 8-bit (one byte).
 | 42 | 0x29 | CMP R3 ACC | Acts like CMP X Y, but with R3 and ACC register |
 | 43 | 0x2A | CMP R4 ACC | Acts like CMP X Y, but with R4 and ACC register |
 | 44 | 0x2B | CMP R5 ACC | Acts like CMP X Y, but with R5 and ACC register |
+| 45 | 0x2C | INC ACC | Increments ACC value |
+| 46 | 0x2D | INC SP | Increments SP value |
+| 47 | 0x2E | INC DP | Increments DP value |
+| 48 | 0x2F | INC R1 | Increments R1 value |
+| 49 | 0x30 | INC R2 | Increments R2 value |
+| 50 | 0x31 | INC R3 | Increments R3 value |
+| 51 | 0x32 | INC R4 | Increments R4 value |
+| 52 | 0x33 | INC R5 | Increments R5 value |
+| 53 | 0x34 | DEC ACC | Decrements ACC value |
+| 54 | 0x35 | DEC SP | Decrements SP value |
+| 55 | 0x36 | DEC DP | Decrements DP value |
+| 56 | 0x37 | DEC R1 | Decrements R1 value |
+| 57 | 0x38 | DEC R2 | Decrements R2 value |
+| 58 | 0x39 | DEC R3 | Decrements R3 value |
+| 59 | 0x3A | DEC R4 | Decrements R4 value |
+| 60 | 0x3B | DEC R5 | Decrements R5 value |
 | 255 | 0xFE | PRNT X | Print one ASCII char (linux-only, for testing purposes) |
 | 256 | 0xFF | HLT | Stops VM |
