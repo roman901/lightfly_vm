@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
     }
 
     if (status == LF_STATE_EXCEPTION) {
-        printf("Program has ended with exception (%li cycles, instruction 0x%x)", context->cycles, context->program[context->instruction_pointer]);
+        printf("Program has ended with exception (%li cycles, instruction 0x%x)", context->cycles, context->program[context->instruction_pointer-1]);
         return EXIT_FAILURE;
     } else if (status == LF_STATE_HALT) {
         printf("Program has halted (%li cycles)", context->cycles);

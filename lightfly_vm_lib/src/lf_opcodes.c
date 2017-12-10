@@ -119,21 +119,29 @@ int _lf_opcode_jmp(lf_context *context) {
 int _lf_opcode_je(lf_context *context) {
     if (context->flag_cf == 1)
         context->instruction_pointer = _lf_read_address(context);
+    else
+        context->instruction_pointer += 2;
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_jne(lf_context *context) {
     if (context->flag_cf == 0)
         context->instruction_pointer = _lf_read_address(context);
+    else
+        context->instruction_pointer += 2;
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_jo(lf_context *context) {
     if (context->flag_of == 1)
         context->instruction_pointer = _lf_read_address(context);
+    else
+        context->instruction_pointer += 2;
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_jno(lf_context *context) {
     if (context->flag_of == 0)
         context->instruction_pointer = _lf_read_address(context);
+    else
+        context->instruction_pointer += 2;
     return LF_STATE_SUCCESS;
 }
 void _lf_compare_logic(lf_context *context, int first, int second) {
@@ -221,11 +229,6 @@ int _lf_opcode_cmp_r5_acc(lf_context *context) {
     _lf_compare_logic(context, first, second);
     return LF_STATE_SUCCESS;
 }
-int _lf_opcode_prnt(lf_context *context) {
-    char chr = lf_executor_next_instruction(context);
-    printf("%c", chr);
-    return LF_STATE_SUCCESS;
-}
 int _lf_opcode_inc_acc(lf_context *context) {
     context->reg_acc++;
     return LF_STATE_SUCCESS;
@@ -288,6 +291,11 @@ int _lf_opcode_dec_r4(lf_context *context) {
 }
 int _lf_opcode_dec_r5(lf_context *context) {
     context->reg_r5--;
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_prnt(lf_context *context) {
+    char chr = lf_executor_next_instruction(context);
+    printf("%c", chr);
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
