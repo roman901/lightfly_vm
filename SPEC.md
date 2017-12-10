@@ -33,7 +33,7 @@ Size of each operand is 8-bit (one byte).
 | --- | --- | --- | --- |
 | 1 | 0x00 | NOP | No operation (skip step) 
 | 2 | 0x01 | ADD X | Accepts one argument and sum it to ACC register |
-| 3 | 0x02 | SUB X | Accepts one argument and substract it from ACC register |
+| 3 | 0x02 | SUB X | Accepts one argument and subtract it from ACC register |
 | 4 | 0x03 | MUL X | Accepts one argument and multiple it to ACC register |
 | 5 | 0x04 | DIV X | Accepts one argument and divides ACC register by it |
 | 6 | 0x05 | MOV ACC, X | Accepts one argument and store it in ACC register |
