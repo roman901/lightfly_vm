@@ -7,7 +7,14 @@ void lf_executor_init(lf_context *context,  size_t length, unsigned char const *
 
     context->instruction_pointer = 0; // First instruction
     context->cycles = 0;
-    context->halted = 0;
+    context->reg_acc = 0;
+    context->reg_sp = 0;
+    context->reg_dp = 0;
+    context->reg_r1 = 0;
+    context->reg_r2 = 0;
+    context->reg_r3 = 0;
+    context->reg_r4 = 0;
+    context->reg_r5 = 0;
     context->program_length = length;
     context->program = program;
 }

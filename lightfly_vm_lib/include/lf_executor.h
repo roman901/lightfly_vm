@@ -12,7 +12,6 @@ typedef struct {
     unsigned char const *program;
 
     // Registers
-    unsigned char halted;
     unsigned char reg_acc;
     unsigned char reg_sp;
     unsigned char reg_dp;
