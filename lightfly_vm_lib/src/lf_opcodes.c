@@ -221,6 +221,11 @@ int _lf_opcode_cmp_r5_acc(lf_context *context) {
     _lf_compare_logic(context, first, second);
     return LF_STATE_SUCCESS;
 }
+int _lf_opcode_prnt(lf_context *context) {
+    char chr = lf_executor_next_instruction(context);
+    printf("%c", chr);
+    return LF_STATE_SUCCESS;
+}
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
@@ -275,5 +280,6 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x2A, _lf_opcode_cmp_r4_acc);
     REGISTER_OPCODE(0x2B, _lf_opcode_cmp_r5_acc);
 
+    REGISTER_OPCODE(0xFE, _lf_opcode_prnt);
     REGISTER_OPCODE(0xFF, _lf_opcode_hlt);
 }
