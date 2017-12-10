@@ -25,5 +25,6 @@ typedef struct {
 
 void lf_executor_init(lf_context *context, size_t length, unsigned char const *program);
 int lf_executor_do_step(lf_context *context);
-
+unsigned char lf_executor_next_instruction(lf_context *context);
+int lf_executor_try_execute(lf_context *context, unsigned char instruction);
 #endif //LIGHTFLY_VM_LF_EXECUTOR_H
