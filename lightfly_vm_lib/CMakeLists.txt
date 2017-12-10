@@ -3,8 +3,11 @@ project(lightfly_vm_lib)
 set(SOURCE_LIB
         src/lib.c
         src/lf_loader.c
+        src/lf_executor.c
 
-        include/lf_loader.h include/lib.h)
+        include/lf_loader.h
+        include/lib.h
+        include/lf_executor.h)
 
 # TODO(spark): get target platform and include needed HAL file
 set(SOURCE_LIB ${SOURCE_LIB} src/arch/linux.c) # Add linux HAL by default
