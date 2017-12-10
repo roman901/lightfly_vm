@@ -21,7 +21,7 @@ In bytecode `ADD 5` construction looks like:
 * R1-R5 - general purpose registers
 
 ## Flags list
-Flags are similar to registers, but can be read only.
+You cannot get flags values directly in code. But there is opcodes like CMP, which can modify or read flag values
 * CF - compare flag, get 1 if CMP operands are equals, otherwise 0
 * OF - overflow flag, get 1 if ADD or SUM result (or in CMP first operand greater than second) 
 get overflow, otherwise 0
