@@ -46,7 +46,7 @@ int _lf_opcode_mov_r5(lf_context *context) {
 int _lf_opcode_jmp(lf_context *context) {
     int high = lf_executor_next_instruction(context);
     int low = lf_executor_next_instruction(context);
-    context->instruction_pointer = high * 16 + low;
+    context->instruction_pointer = high * 256 + low;
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };

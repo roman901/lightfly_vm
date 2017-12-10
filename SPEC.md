@@ -36,5 +36,5 @@ Size of each operand is 8-bit (one byte).
 | 9 | 0x08 | MOV R3 | Accepts on argument and store in in R3 register |
 | 10 | 0x09 | MOV R4 | Accepts on argument and store in in R4 register |
 | 11 | 0x0A | MOV R5 | Accepts on argument and store in in R5 register |
-| 12 | 0x0B | JMP | Accepts one argument - address, and jump on it |
+| 12 | 0x0B | JMP | Accepts two arguments - address, splitted into two 8-bit digits and jump on it |
 | 256 | 0xFF | HLT | Stops VM |
