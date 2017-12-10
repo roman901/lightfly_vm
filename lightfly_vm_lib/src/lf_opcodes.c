@@ -1,15 +1,14 @@
 #include <lf_opcodes.h>
 #include <lf_executor.h>
+#include <stdio.h>
 
 int _lf_opcode_nop(lf_context *context) { return LF_STATE_SUCCESS; }; // Nothing interesting
 int _lf_opcode_add(lf_context *context) {
-    unsigned char instruction = lf_executor_next_instruction(context);
-    context->reg_acc += instruction;
+    context->reg_acc += lf_executor_next_instruction(context);
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_sub(lf_context *context) {
-    unsigned char instruction = lf_executor_next_instruction(context);
-    context->reg_acc -= instruction;
+    context->reg_acc -= lf_executor_next_instruction(context);
     return LF_STATE_SUCCESS;
 }
 int _lf_opcode_mov_acc(lf_context *context) {
@@ -44,6 +43,12 @@ int _lf_opcode_mov_r5(lf_context *context) {
     context->reg_r5 = lf_executor_next_instruction(context);
     return LF_STATE_SUCCESS;
 }
+int _lf_opcode_jmp(lf_context *context) {
+    int high = lf_executor_next_instruction(context);
+    int low = lf_executor_next_instruction(context);
+    context->instruction_pointer = high * 16 + low;
+    return LF_STATE_SUCCESS;
+}
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
@@ -58,5 +63,6 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x08, _lf_opcode_mov_r3);
     REGISTER_OPCODE(0x09, _lf_opcode_mov_r4);
     REGISTER_OPCODE(0x0A, _lf_opcode_mov_r5);
+    REGISTER_OPCODE(0x0B, _lf_opcode_jmp);
     REGISTER_OPCODE(0xFF, _lf_opcode_hlt);
 }

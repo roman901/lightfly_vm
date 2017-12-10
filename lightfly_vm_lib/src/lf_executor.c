@@ -22,6 +22,8 @@ void lf_executor_init(lf_context *context,  size_t length, unsigned char const *
 int lf_executor_do_step(lf_context *context) {
     if (context->instruction_pointer == context->program_length) {
         return LF_STATE_HALT;
+    } else if (context->instruction_pointer > context->program_length) {
+        return LF_STATE_EXCEPTION;
     }
     context->cycles++;
 
