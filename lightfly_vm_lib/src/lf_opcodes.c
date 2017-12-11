@@ -1,4 +1,4 @@
-#include <lf_executor.h>
+#include "lf_executor.h"
 #include "lf_opcodes.h"
 
 int _lf_opcode_nop(lf_context *context) { return LF_STATE_SUCCESS; }; // Nothing interesting
