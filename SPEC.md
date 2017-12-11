@@ -27,6 +27,9 @@ You cannot get flags values directly in code. But there is opcodes like CMP, whi
 * OF - overflow flag, get 1 if ADD or SUM result (or in CMP first operand greater than second) 
 get overflow, otherwise 0
 
+## Stack
+For temporary data storage Lightfly VM has a stack for 16 8-bit values. There is a `PUSH <reg>` and `POP <reg>` opcodes exists.
+If there is no storage for new values when you do `PUSH` (or stack is empty when `POP`) program will be stopped with `LF_STATE_EXCEPTION`.
 ## Platform-specific opcodes
 Runner software can register custom opcodes for their purposes.
 By example, Linux runner register 0xFE opcode `PRNT X`, which displays one ASCII char.
@@ -97,4 +100,23 @@ Size of each operand is 8-bit (one byte).
 | 58 | 0x39 | DEC R3 | Decrements R3 value |
 | 59 | 0x3A | DEC R4 | Decrements R4 value |
 | 60 | 0x3B | DEC R5 | Decrements R5 value |
+| 61 | 0x3C | OPEX X | Check if given opcode exists and set CF to 1 if yes, otherwise 0 |
+| 62 | 0x3D | OPREG X | Registers new `virtual` opcode. See [Virtual opcodes specification](VIRTUAL.md) |
+| 63 | 0x3E | PUSH ACC | Push ACC register to stack |
+| 64 | 0x3F | PUSH SP | Push SP register to stack |
+| 65 | 0x40 | PUSH DP | Push DP register to stack |
+| 66 | 0x41 | PUSH R1 | Push R1 register to stack |
+| 67 | 0x42 | PUSH R2 | Push R2 register to stack |
+| 68 | 0x43 | PUSH R3 | Push R3 register to stack |
+| 69 | 0x44 | PUSH R4 | Push R4 register to stack |
+| 70 | 0x45 | PUSH R5 | Push R5 register to stack |
+| 71 | 0x46 | POP ACC | Pop ACC register from stack |
+| 72 | 0x47 | POP SP | Pop SP register from stack |
+| 73 | 0x48 | POP DP | Pop DP register from stack |
+| 74 | 0x49 | POP R1 | Pop R1 register from stack |
+| 75 | 0x4A | POP R2 | Pop R2 register from stack |
+| 76 | 0x4B | POP R3 | Pop R3 register from stack |
+| 77 | 0x4C | POP R4 | Pop R4 register from stack |
+| 78 | 0x4D | POP R5 | Pop R5 register from stack |
+
 | 256 | 0xFF | HLT | Stops VM |
