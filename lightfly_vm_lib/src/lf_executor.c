@@ -1,8 +1,8 @@
 #include <stdlib.h>
-#include <lf_executor.h>
-#include <lf_opcodes.h>
+#include "lf_executor.h"
+#include "lf_opcodes.h"
 
-void lf_executor_init(lf_context *context,  size_t length, unsigned char const *program) {
+void lf_executor_init(lf_context *context, size_t length, unsigned char const *program) {
     lf_opcodes_init();
 
     context->instruction_pointer = 0; // First instruction
@@ -19,6 +19,10 @@ void lf_executor_init(lf_context *context,  size_t length, unsigned char const *
     context->flag_of = 0;
     context->program_length = length;
     context->program = program;
+
+    lf_stack *stack = malloc(sizeof(lf_stack));
+    stack->position = 0;
+    context->stack = stack;
 }
 
 int lf_executor_do_step(lf_context *context) {

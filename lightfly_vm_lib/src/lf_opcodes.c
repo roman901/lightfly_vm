@@ -1,6 +1,5 @@
-#include <lf_opcodes.h>
 #include <lf_executor.h>
-#include <stdio.h>
+#include "lf_opcodes.h"
 
 int _lf_opcode_nop(lf_context *context) { return LF_STATE_SUCCESS; }; // Nothing interesting
 int _lf_opcode_add(lf_context *context) {
@@ -293,6 +292,62 @@ int _lf_opcode_dec_r5(lf_context *context) {
     context->reg_r5--;
     return LF_STATE_SUCCESS;
 }
+int _lf_opcode_opex(lf_context *context) {
+    if ((*lf_opcodes[lf_executor_next_instruction(context)]) == NULL) {
+        context->flag_cf = 0;
+    } else {
+        context->flag_cf = 1;
+    }
+    return LF_STATE_SUCCESS;
+}
+int _lf_opcode_push_acc(lf_context *context) {
+    return lf_stack_push(context, context->reg_acc);
+}
+int _lf_opcode_push_sp(lf_context *context) {
+    return lf_stack_push(context, context->reg_sp);
+}
+int _lf_opcode_push_dp(lf_context *context) {
+    return lf_stack_push(context, context->reg_dp);
+}
+int _lf_opcode_push_r1(lf_context *context) {
+    return lf_stack_push(context, context->reg_r1);
+}
+int _lf_opcode_push_r2(lf_context *context) {
+    return lf_stack_push(context, context->reg_r2);
+}
+int _lf_opcode_push_r3(lf_context *context) {
+    return lf_stack_push(context, context->reg_r3);
+}
+int _lf_opcode_push_r4(lf_context *context) {
+    return lf_stack_push(context, context->reg_r4);
+}
+int _lf_opcode_push_r5(lf_context *context) {
+    return lf_stack_push(context, context->reg_r5);
+}
+int _lf_opcode_pop_acc(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_acc);
+}
+int _lf_opcode_pop_sp(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_sp);
+}
+int _lf_opcode_pop_dp(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_dp);
+}
+int _lf_opcode_pop_r1(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_r1);
+}
+int _lf_opcode_pop_r2(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_r2);
+}
+int _lf_opcode_pop_r3(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_r3);
+}
+int _lf_opcode_pop_r4(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_r4);
+}
+int _lf_opcode_pop_r5(lf_context *context) {
+    return lf_stack_pop(context, &context->reg_r5);
+}
 int _lf_opcode_hlt(lf_context *context) { return LF_STATE_HALT; };
 
 void lf_opcodes_init() {
@@ -355,7 +410,6 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x31, _lf_opcode_inc_r3);
     REGISTER_OPCODE(0x32, _lf_opcode_inc_r4);
     REGISTER_OPCODE(0x33, _lf_opcode_inc_r5);
-    REGISTER_OPCODE(0x33, _lf_opcode_inc_r5);
 
     REGISTER_OPCODE(0x34, _lf_opcode_dec_acc);
     REGISTER_OPCODE(0x35, _lf_opcode_dec_sp);
@@ -365,6 +419,27 @@ void lf_opcodes_init() {
     REGISTER_OPCODE(0x39, _lf_opcode_dec_r3);
     REGISTER_OPCODE(0x3A, _lf_opcode_dec_r4);
     REGISTER_OPCODE(0x3B, _lf_opcode_dec_r5);
+
+    REGISTER_OPCODE(0x3C, _lf_opcode_opex);
+    REGISTER_OPCODE(0x3D, _lf_opcode_nop);
+
+    REGISTER_OPCODE(0x3E, _lf_opcode_push_acc);
+    REGISTER_OPCODE(0x3F, _lf_opcode_push_sp);
+    REGISTER_OPCODE(0x40, _lf_opcode_push_dp);
+    REGISTER_OPCODE(0x41, _lf_opcode_push_r1);
+    REGISTER_OPCODE(0x42, _lf_opcode_push_r2);
+    REGISTER_OPCODE(0x43, _lf_opcode_push_r3);
+    REGISTER_OPCODE(0x44, _lf_opcode_push_r4);
+    REGISTER_OPCODE(0x45, _lf_opcode_push_r5);
+
+    REGISTER_OPCODE(0x46, _lf_opcode_pop_acc);
+    REGISTER_OPCODE(0x47, _lf_opcode_pop_sp);
+    REGISTER_OPCODE(0x48, _lf_opcode_pop_dp);
+    REGISTER_OPCODE(0x49, _lf_opcode_pop_r1);
+    REGISTER_OPCODE(0x4A, _lf_opcode_pop_r2);
+    REGISTER_OPCODE(0x4B, _lf_opcode_pop_r3);
+    REGISTER_OPCODE(0x4C, _lf_opcode_pop_r4);
+    REGISTER_OPCODE(0x4D, _lf_opcode_pop_r5);
 
     REGISTER_OPCODE(0xFF, _lf_opcode_hlt);
 }

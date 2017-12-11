@@ -1,6 +1,9 @@
 #ifndef LIGHTFLY_VM_LF_EXECUTOR_H
 #define LIGHTFLY_VM_LF_EXECUTOR_H
 
+#include <stdlib.h>
+#include "lf_stack.h"
+
 #define LF_STATE_SUCCESS 0
 #define LF_STATE_EXCEPTION 1
 #define LF_STATE_HALT 255
@@ -23,6 +26,8 @@ typedef struct {
 
     unsigned char flag_cf;
     unsigned char flag_of;
+
+    lf_stack *stack;
 
 } lf_context;
 

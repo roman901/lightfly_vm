@@ -2,9 +2,9 @@
 #define LIGHTFLY_VM_LF_OPCODES_H
 
 #include <stdlib.h>
-#include <lf_executor.h>
+#include "lf_executor.h"
 
-int (*lf_opcodes[])(lf_context *context);
+int (*lf_opcodes[256])(lf_context *context);
 
 #define REGISTER_OPCODE(opcode, function) \
     lf_opcodes[opcode] = &(function);
