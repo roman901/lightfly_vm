@@ -65,14 +65,21 @@ int main(int argc, char** argv) {
         status = lf_executor_do_step(context);
     }
 
+    int return_status = EXIT_SUCCESS;
     if (status == LF_STATE_EXCEPTION) {
         printf("Program has ended with exception (%li cycles, instruction 0x%x)", context->cycles, context->program[context->instruction_pointer-1]);
-        return EXIT_FAILURE;
+        return_status = EXIT_FAILURE;
     } else if (status == LF_STATE_HALT) {
         printf("Program has halted (%li cycles)", context->cycles);
     } else {
         printf("An unknown error occurred");
     }
 
-    return EXIT_SUCCESS;
+    // Free resources
+    free(context->stack);
+    free(context);
+    free(program);
+    free(raw_program);
+
+    return return_status;
 }

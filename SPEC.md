@@ -118,5 +118,4 @@ Size of each operand is 8-bit (one byte).
 | 76 | 0x4B | POP R3 | Pop R3 register from stack |
 | 77 | 0x4C | POP R4 | Pop R4 register from stack |
 | 78 | 0x4D | POP R5 | Pop R5 register from stack |
-
 | 256 | 0xFF | HLT | Stops VM |

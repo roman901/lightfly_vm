@@ -1,5 +1,6 @@
 #include "lf_executor.h"
 #include "lf_opcodes.h"
+#include "lf_stack.h"
 
 int _lf_opcode_nop(lf_context *context) { return LF_STATE_SUCCESS; }; // Nothing interesting
 int _lf_opcode_add(lf_context *context) {
@@ -50,62 +51,33 @@ int _lf_opcode_mov_r5(lf_context *context) {
     context->reg_r5 = lf_executor_next_instruction(context);
     return LF_STATE_SUCCESS;
 }
-int _lf_opcode_mov_sp_acc(lf_context *context) {
-    context->reg_sp = context->reg_acc;
-    return LF_STATE_SUCCESS;
+
+#define DEFINE_MOV_REG_ACC_OPCODE(register) \
+int _lf_opcode_mov_##register##_acc(lf_context *context) { \
+    context->reg_##register = context->reg_acc; \
+    return LF_STATE_SUCCESS; \
 }
-int _lf_opcode_mov_dp_acc(lf_context *context) {
-    context->reg_dp = context->reg_acc;
-    return LF_STATE_SUCCESS;
+DEFINE_MOV_REG_ACC_OPCODE(sp)
+DEFINE_MOV_REG_ACC_OPCODE(dp)
+DEFINE_MOV_REG_ACC_OPCODE(r1)
+DEFINE_MOV_REG_ACC_OPCODE(r2)
+DEFINE_MOV_REG_ACC_OPCODE(r3)
+DEFINE_MOV_REG_ACC_OPCODE(r4)
+DEFINE_MOV_REG_ACC_OPCODE(r5)
+
+#define DEFINE_MOV_ACC_REG_OPCODE(register) \
+int _lf_opcode_mov_acc_##register(lf_context *context) { \
+    context->reg_acc = context->reg_##register; \
+    return LF_STATE_SUCCESS; \
 }
-int _lf_opcode_mov_r1_acc(lf_context *context) {
-    context->reg_r1 = context->reg_acc;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_r2_acc(lf_context *context) {
-    context->reg_r2 = context->reg_acc;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_r3_acc(lf_context *context) {
-    context->reg_r3 = context->reg_acc;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_r4_acc(lf_context *context) {
-    context->reg_r4 = context->reg_acc;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_r5_acc(lf_context *context) {
-    context->reg_r5 = context->reg_acc;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_sp(lf_context *context) {
-    context->reg_acc = context->reg_sp;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_dp(lf_context *context) {
-    context->reg_acc = context->reg_dp;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_r1(lf_context *context) {
-    context->reg_acc = context->reg_r1;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_r2(lf_context *context) {
-    context->reg_acc = context->reg_r2;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_r3(lf_context *context) {
-    context->reg_acc = context->reg_r3;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_r4(lf_context *context) {
-    context->reg_acc = context->reg_r4;
-    return LF_STATE_SUCCESS;
-}
-int _lf_opcode_mov_acc_r5(lf_context *context) {
-    context->reg_acc = context->reg_r5;
-    return LF_STATE_SUCCESS;
-}
+DEFINE_MOV_ACC_REG_OPCODE(sp)
+DEFINE_MOV_ACC_REG_OPCODE(dp)
+DEFINE_MOV_ACC_REG_OPCODE(r1)
+DEFINE_MOV_ACC_REG_OPCODE(r2)
+DEFINE_MOV_ACC_REG_OPCODE(r3)
+DEFINE_MOV_ACC_REG_OPCODE(r4)
+DEFINE_MOV_ACC_REG_OPCODE(r5)
+
 int _lf_read_address(lf_context *context) {
     int high = lf_executor_next_instruction(context);
     int low = lf_executor_next_instruction(context);
